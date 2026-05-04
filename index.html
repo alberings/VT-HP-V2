@@ -1,0 +1,2638 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Valmieras Tehnikums — profesionālā izglītība nākotnei. Praktiskās prasmes un reālas karjeras iespējas.">
+    <title>Valmieras Tehnikums — Profesionālā izglītība nākotnei</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CSS RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --orange: #FF6A00;
+            --orange-light: #FF7A1A;
+            --orange-dark: #E55D00;
+            --orange-glow: rgba(255, 106, 0, 0.12);
+            --orange-glow-strong: rgba(255, 106, 0, 0.2);
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-400: #BDBDBD;
+            --gray-500: #9E9E9E;
+            --gray-600: #757575;
+            --gray-700: #616161;
+            --gray-800: #424242;
+            --gray-900: #212121;
+            --text-primary: #1A1A2E;
+            --text-secondary: #555568;
+            --text-muted: #8888A0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 50px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.05);
+            --shadow-orange: 0 8px 30px rgba(255, 106, 0, 0.3);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --max-width: 1200px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-primary);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============================================
+           SCROLLBAR
+           ============================================ */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-400);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--orange);
+        }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; }
+        h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); }
+        h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+        h4 { font-size: 1.125rem; }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--orange);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--orange-dark);
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            margin-bottom: 16px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .section-title {
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center .section-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bg-light {
+            background: var(--gray-50);
+        }
+
+        /* ============================================
+           PAGE SYSTEM
+           ============================================ */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 14px 0;
+            box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border-radius: 100px;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--orange);
+            background: var(--orange-glow);
+        }
+
+        .nav-links a.active {
+            font-weight: 600;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--orange), var(--orange-light)) !important;
+            color: var(--white) !important;
+            font-weight: 600 !important;
+            box-shadow: var(--shadow-orange);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 35px rgba(255, 106, 0, 0.4) !important;
+            background: linear-gradient(135deg, var(--orange-dark), var(--orange)) !important;
+        }
+
+        /* Mobile Menu */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: none;
+            z-index: 1001;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            color: var(--white);
+            box-shadow: var(--shadow-orange);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 40px rgba(255, 106, 0, 0.45);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--gray-300);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            background: var(--orange-glow);
+        }
+
+        .btn-outline-orange {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+        }
+
+        .btn-outline-orange:hover {
+            background: var(--orange);
+            color: var(--white);
+            box-shadow: var(--shadow-orange);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--orange);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-sm {
+            padding: 10px 22px;
+            font-size: 0.85rem;
+        }
+
+        .btn-icon {
+            font-size: 1.1em;
+            transition: transform var(--transition);
+        }
+
+        .btn:hover .btn-icon {
+            transform: translateX(3px);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 122, 26, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+
+        .hero-content {
+            max-width: 560px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--orange-glow);
+            border: 1px solid rgba(255, 106, 0, 0.15);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 28px;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        .hero h1 {
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-stat-number .accent {
+            color: var(--orange);
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .hero-image-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+
+        .hero-image-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 106, 0, 0.08) 0%, 
+                transparent 50%, 
+                rgba(255, 122, 26, 0.05) 100%);
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .hero-image-placeholder svg {
+            width: 64px;
+            height: 64px;
+            opacity: 0.3;
+        }
+
+        /* Floating cards on hero */
+        .hero-float-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float 6s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .hero-float-card.card-1 {
+            top: 10%;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .hero-float-card.card-2 {
+            bottom: 20%;
+            right: -20px;
+            animation-delay: 2s;
+        }
+
+        .hero-float-card.card-3 {
+            bottom: 5%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .float-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .float-icon.orange {
+            background: var(--orange-glow);
+            color: var(--orange);
+        }
+
+        .float-icon.green {
+            background: rgba(76, 175, 80, 0.12);
+            color: #4CAF50;
+        }
+
+        .float-icon.blue {
+            background: rgba(33, 150, 243, 0.12);
+            color: #2196F3;
+        }
+
+        .float-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .float-text span {
+            display: block;
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+        }
+
+        /* ============================================
+           ABOUT SNAPSHOT
+           ============================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--orange-light));
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .about-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 16px;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .about-feature-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--orange-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .about-feature-icon svg {
+            width: 14px;
+            height: 14px;
+            color: var(--orange);
+        }
+
+        .about-feature-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .about-feature-text span {
+            display: block;
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* ============================================
+           STUDY FIELDS (CARDS)
+           ============================================ */
+        .fields-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .field-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .field-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange), var(--orange-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .field-card:hover {
+            border-color: transparent;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .field-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .field-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: var(--orange-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .field-card:hover .field-card-icon {
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            box-shadow: var(--shadow-orange);
+        }
+
+        .field-card:hover .field-card-icon svg {
+            color: white;
+        }
+
+        .field-card-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--orange);
+            transition: var(--transition);
+        }
+
+        .field-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+
+        .field-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .field-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--orange);
+            transition: var(--transition);
+        }
+
+        .field-card-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--transition);
+        }
+
+        .field-card:hover .field-card-link svg {
+            transform: translateX(4px);
+        }
+
+        /* ============================================
+           FACILITIES / ADVANTAGES
+           ============================================ */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .advantage-item {
+            text-align: center;
+            padding: 40px 24px;
+            border-radius: var(--radius-lg);
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+
+        .advantage-item:hover {
+            border-color: transparent;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .advantage-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: var(--orange-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .advantage-item:hover .advantage-icon {
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            box-shadow: var(--shadow-orange);
+        }
+
+        .advantage-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--orange);
+            transition: var(--transition);
+        }
+
+        .advantage-item:hover .advantage-icon svg {
+            color: white;
+        }
+
+        .advantage-item h4 {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .advantage-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           NEWS SECTION
+           ============================================ */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .news-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            border-color: transparent;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .news-card-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+            position: relative;
+        }
+
+        .news-card-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .news-card-body {
+            padding: 24px;
+        }
+
+        .news-card-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .news-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .news-card-excerpt {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section {
+            padding: 100px 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            border-radius: var(--radius-xl);
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        .cta-box::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-box > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-box h2 {
+            color: var(--white);
+            margin-bottom: 16px;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+        }
+
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin-bottom: 36px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--gray-900);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .footer h4 {
+            color: var(--white);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-size: 0.85rem;
+        }
+
+        .footer-contact-item svg {
+            width: 16px;
+            height: 16px;
+            color: var(--orange);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* ============================================
+           INFO PAGE
+           ============================================ */
+        .page-hero {
+            padding: 140px 0 80px;
+            background: var(--gray-50);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-hero h1 {
+            margin-bottom: 16px;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        /* Programs */
+        .program-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .program-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 24px;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            border-color: transparent;
+            box-shadow: var(--shadow-md);
+        }
+
+        .program-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: var(--orange-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .program-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--orange);
+        }
+
+        .program-info h3 {
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+
+        .program-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .program-meta-item {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .program-meta-item svg {
+            width: 14px;
+            height: 14px;
+            color: var(--orange);
+        }
+
+        .program-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .program-tag {
+            padding: 6px 14px;
+            background: var(--gray-100);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Info blocks */
+        .info-blocks {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .info-block {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+        }
+
+        .info-block h3 {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-block h3 svg {
+            width: 22px;
+            height: 22px;
+            color: var(--orange);
+        }
+
+        .info-block ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-block li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-block li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--orange);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           CONTACT PAGE
+           ============================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .contact-info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .contact-info-card:hover {
+            background: var(--orange-glow);
+        }
+
+        .contact-info-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            background: var(--orange-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-info-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--orange);
+        }
+
+        .contact-info-text h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-info-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info-text a {
+            color: var(--orange);
+            font-weight: 500;
+        }
+
+        .contact-map {
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Contact Form */
+        .contact-form-wrapper {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+
+        .contact-form-wrapper h3 {
+            margin-bottom: 8px;
+        }
+
+        .contact-form-wrapper > p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            border: 1.5px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            color: var(--text-primary);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px var(--orange-glow);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-success {
+            display: none;
+            padding: 16px 20px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: var(--radius-sm);
+            color: #2E7D32;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .form-success.show {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Working hours */
+        .working-hours {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .working-hours h4 {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .working-hours h4 svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 0.85rem;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-row .day {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .hours-row .time {
+            color: var(--text-muted);
+        }
+
+        .hours-row .time.closed {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           ANIMATIONS (Scroll reveal)
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .fields-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .program-card {
+                grid-template-columns: auto 1fr;
+            }
+
+            .program-tags {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 70px 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                padding: 100px 32px 32px;
+                gap: 8px;
+                box-shadow: var(--shadow-xl);
+                transition: right var(--transition);
+                align-items: stretch;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                padding: 14px 20px;
+                border-radius: var(--radius-sm);
+                font-size: 1rem;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .fields-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .hero-stat-number {
+                font-size: 1.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-blocks {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .cta-box {
+                padding: 50px 30px;
+            }
+
+            .program-card {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .program-icon {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* ============================================
+           MOBILE OVERLAY
+           ============================================ */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 999;
+            backdrop-filter: blur(4px);
+        }
+
+        .nav-overlay.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         NAVIGATION
+         ========================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo" onclick="navigateTo('home'); return false;">
+                <div class="nav-logo-icon">VT</div>
+                <span>Valmieras Tehnikums</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active" data-page="home" onclick="navigateTo('home'); return false;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Sākums
+                </a></li>
+                <li><a href="#" data-page="info" onclick="navigateTo('info'); return false;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    Informācija
+                </a></li>
+                <li><a href="#" data-page="contact" onclick="navigateTo('contact'); return false;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Kontakti
+                </a></li>
+                <li><a href="#" class="nav-cta" onclick="navigateTo('contact'); return false;">Pieteikties</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ==========================================
+         HOME PAGE
+         ========================================== -->
+    <div class="page active" id="page-home">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Uzņemšana 2025/2026
+                    </div>
+                    <h1>Profesionālā izglītība <span class="highlight">nākotnei</span></h1>
+                    <p class="hero-description">
+                        Iegūsti praktiskās prasmes un reālas karjeras iespējas vienā no modernākajiem profesionālās izglītības centriem Latvijā.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary" onclick="navigateTo('info'); return false;">
+                            Programmas
+                            <span class="btn-icon">→</span>
+                        </a>
+                        <a href="#" class="btn btn-secondary" onclick="navigateTo('contact'); return false;">
+                            Sazināties
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div>
+                            <div class="hero-stat-number">500<span class="accent">+</span></div>
+                            <div class="hero-stat-label">Studentu</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-number">12<span class="accent">+</span></div>
+                            <div class="hero-stat-label">Programmas</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-number">95<span class="accent">%</span></div>
+                            <div class="hero-stat-label">Nodarbinātība</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <div class="hero-image-main">
+                            <div class="hero-image-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                <span>Studentu foto / laboratorija</span>
+                            </div>
+                        </div>
+                        <div class="hero-float-card card-1">
+                            <div class="float-icon orange">⚡</div>
+                            <div class="float-text">
+                                Modernas laboratorijas
+                                <span>Praktiskā apmācība</span>
+                            </div>
+                        </div>
+                        <div class="hero-float-card card-2">
+                            <div class="float-icon green">🌍</div>
+                            <div class="float-text">
+                                Erasmus+ programma
+                                <span>Starptautiska pieredze</span>
+                            </div>
+                        </div>
+                        <div class="hero-float-card card-3">
+                            <div class="float-icon blue">🏆</div>
+                            <div class="float-text">
+                                SkillsLatvia
+                                <span>Konkursi & sacensības</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SNAPSHOT -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image reveal">
+                        <div class="about-image-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <span>Skolas ēka / studentu vide</span>
+                        </div>
+                    </div>
+                    <div class="about-content reveal reveal-delay-2">
+                        <span class="section-label">Par mums</span>
+                        <h2 class="section-title">Izglītība, kas sagatavo reālai karjerai</h2>
+                        <p>
+                            Valmieras Tehnikums piedāvā profesionālo izglītību, kas apvienota ar vidējo izglītību, nodrošinot studentus ar prasmēm, kas tieši atbilst darba tirgus prasībām.
+                        </p>
+                        <p>
+                            Mūsu fokusā ir praktiskā apmācība, modernās tehnoloģijas un individuāla pieeja katram studentam.
+                        </p>
+                        <div class="about-features">
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div class="about-feature-text">
+                                    Profesionālā + vidējā izglītība
+                                    <span>Vienlaicīga iegūšana vienā programmā</span>
+                                </div>
+                            </div>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div class="about-feature-text">
+                                    Darba tirgus prasībām atbilstošas prasmes
+                                    <span>Sadarbība ar nozares uzņēmumiem</span>
+                                </div>
+                            </div>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div class="about-feature-text">
+                                    Modernas laboratorijas un darbnīcas
+                                    <span>VR vide, metālapstrāde, elektronika</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDY FIELDS -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center reveal">
+                    <span class="section-label">Studiju virzieni</span>
+                    <h2 class="section-title">Izvēlies savu nākotnes profesiju</h2>
+                    <p class="section-subtitle">
+                        Piedāvājam dažādas profesionālās programmas, kas atbilst mūsdienu darba tirgus pieprasījumam.
+                    </p>
+                </div>
+                <div class="fields-grid">
+                    <div class="field-card reveal reveal-delay-1">
+                        <div class="field-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m-7.07-3.93l4.24-4.24m5.66-5.66l4.24-4.24M1 12h6m6 0h6m-3.93-7.07l-4.24 4.24m-5.66 5.66l-4.24 4.24"/></svg>
+                        </div>
+                        <h3>Mehatronika</h3>
+                        <p>Automatizācijas sistēmu projektēšana, uzturēšana un programmēšana rūpniecībā.</p>
+                        <span class="field-card-link">
+                            Uzzināt vairāk
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                    <div class="field-card reveal reveal-delay-2">
+                        <div class="field-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h3>Programmēšana</h3>
+                        <p>Programmatūras izstrāde, tīmekļa tehnoloģijas un datubāzu pārvaldība.</p>
+                        <span class="field-card-link">
+                            Uzzināt vairāk
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                    <div class="field-card reveal reveal-delay-3">
+                        <div class="field-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <h3>Enerģētika</h3>
+                        <p>Elektroenerģētikas sistēmu apkalpošana, atjaunojamie energoresursi.</p>
+                        <span class="field-card-link">
+                            Uzzināt vairāk
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                    <div class="field-card reveal reveal-delay-1">
+                        <div class="field-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        </div>
+                        <h3>Loģistika</h3>
+                        <p>Kravu pārvadājumu plānošana, noliktavu vadība un piegādes ķēdes.</p>
+                        <span class="field-card-link">
+                            Uzzināt vairāk
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                    <div class="field-card reveal reveal-delay-2">
+                        <div class="field-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                        </div>
+                        <h3>Pārtikas ražošana</h3>
+                        <p>Pārtikas produktu tehnoloģija, kvalitātes kontrole un ražošanas procesi.</p>
+                        <span class="field-card-link">
+                            Uzzināt vairāk
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                    <div class="field-card reveal reveal-delay-3">
+                        <div class="field-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <h3>Metālapstrāde</h3>
+                        <p>CNC darbgaldi, metināšana un mehāniskā apstrāde modernās darbnīcās.</p>
+                        <span class="field-card-link">
+                            Uzzināt vairāk
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FACILITIES / ADVANTAGES -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="text-center reveal">
+                    <span class="section-label">Priekšrocības</span>
+                    <h2 class="section-title">Kāpēc izvēlēties Valmieras Tehnikumu?</h2>
+                    <p class="section-subtitle">
+                        Mēs piedāvājam modernu vidi, starptautiskas iespējas un reālu sagatavošanu karjerai.
+                    </p>
+                </div>
+                <div class="advantages-grid">
+                    <div class="advantage-item reveal reveal-delay-1">
+                        <div class="advantage-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <h4>Modernas laboratorijas</h4>
+                        <p>Metālapstrādes, VR un elektronikas laboratorijas ar jaunāko aprīkojumu.</p>
+                    </div>
+                    <div class="advantage-item reveal reveal-delay-2">
+                        <div class="advantage-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <h4>Erasmus+ programma</h4>
+                        <p>Starptautiskā mobilitāte un prakses iespējas Eiropas valstīs.</p>
+                    </div>
+                    <div class="advantage-item reveal reveal-delay-3">
+                        <div class="advantage-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <h4>Konkursi & sacensības</h4>
+                        <p>Dalība SkillsLatvia un citos profesionālās meistarības konkursos.</p>
+                    </div>
+                    <div class="advantage-item reveal reveal-delay-4">
+                        <div class="advantage-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h4>Prakse uzņēmumos</h4>
+                        <p>Reāla darba pieredze vadošajos Latvijas uzņēmumos jau studiju laikā.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWS -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center reveal">
+                    <span class="section-label">Jaunumi</span>
+                    <h2 class="section-title">Aktuālais</h2>
+                    <p class="section-subtitle">
+                        Seko līdzi jaunākajiem notikumiem un iespējām.
+                    </p>
+                </div>
+                <div class="news-grid">
+                    <div class="news-card reveal reveal-delay-1">
+                        <div class="news-card-image">
+                            <div class="news-card-image-placeholder">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            </div>
+                        </div>
+                        <div class="news-card-body">
+                            <div class="news-card-date">2025. gada janvāris</div>
+                            <div class="news-card-title">SkillsLatvia 2025 — mūsu studenti uzvar mehatronikā</div>
+                            <p class="news-card-excerpt">Valmieras Tehnikuma komanda izcīnīja 1. vietu nacionālajā profesionālās meistarības konkursā.</p>
+                        </div>
+                    </div>
+                    <div class="news-card reveal reveal-delay-2">
+                        <div class="news-card-image">
+                            <div class="news-card-image-placeholder">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            </div>
+                        </div>
+                        <div class="news-card-body">
+                            <div class="news-card-date">2024. gada decembris</div>
+                            <div class="news-card-title">Erasmus+ mobilitāte — jaunas iespējas 2025</div>
+                            <p class="news-card-excerpt">Atvērta pieteikšanās starptautiskajai praksei Vācijā, Somijā un Nīderlandē.</p>
+                        </div>
+                    </div>
+                    <div class="news-card reveal reveal-delay-3">
+                        <div class="news-card-image">
+                            <div class="news-card-image-placeholder">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            </div>
+                        </div>
+                        <div class="news-card-body">
+                            <div class="news-card-date">2024. gada novembris</div>
+                            <div class="news-card-title">Jauna VR laboratorija atvērta studentiem</div>
+                            <p class="news-card-excerpt">Modernā virtuālās realitātes vide ļauj apgūt sarežģītus tehniskos procesus drošā vidē.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box reveal">
+                    <h2>Sāc savu profesionālo ceļu jau šodien</h2>
+                    <p>Piesakies konsultācijai un uzzini, kura programma vislabāk atbilst tavām interesēm.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-white" onclick="navigateTo('contact'); return false;">
+                            Pieteikties konsultācijai
+                            <span class="btn-icon">→</span>
+                        </a>
+                        <a href="#" class="btn btn-outline-orange" style="border-color: rgba(255,255,255,0.4); color: white;" onclick="navigateTo('info'); return false;">
+                            Apskatīt programmas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ==========================================
+         INFO PAGE
+         ========================================== -->
+    <div class="page" id="page-info">
+
+        <div class="page-hero">
+            <div class="container">
+                <span class="section-label">Informācija</span>
+                <h1>Par Valmieras Tehnikumu</h1>
+                <p>Moderns profesionālās izglītības centrs, kas sagatavo speciālistus reālam darba tirgum.</p>
+            </div>
+        </div>
+
+        <!-- About School -->
+        <section class="section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content reveal">
+                        <span class="section-label">Misija</span>
+                        <h2 class="section-title">Sagatavot studentus reālai karjerai</h2>
+                        <p>
+                            Valmieras Tehnikuma misija ir nodrošināt kvalitatīvu profesionālo izglītību, kas apvienota ar vidējo izglītību, sagatavojot studentus gan tūlītējai darba uzsākšanai, gan tālākai izglītībai.
+                        </p>
+                        <p>
+                            Mūsu vide ir moderna, praktiska un karjerā orientēta — katrs students iegūst reālas prasmes, kas tiek novērtētas darba tirgū.
+                        </p>
+                    </div>
+                    <div class="about-image reveal reveal-delay-2">
+                        <div class="about-image-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <span>Skolas vide / laboratorija</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-label">Programmas</span>
+                    <h2 class="section-title">Profesionālās izglītības programmas</h2>
+                    <p class="section-subtitle">
+                        Katra programma ir izstrādāta sadarbībā ar nozares ekspertiem, lai nodrošinātu atbilstību darba tirgus prasībām.
+                    </p>
+                </div>
+                <div class="program-list">
+                    <div class="program-card reveal reveal-delay-1">
+                        <div class="program-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m-7.07-3.93l4.24-4.24m5.66-5.66l4.24-4.24M1 12h6m6 0h6"/></svg>
+                        </div>
+                        <div class="program-info">
+                            <h3>Mehatronikas tehniķis</h3>
+                            <div class="program-meta">
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 12 16"/></svg>
+                                    4 gadi
+                                </span>
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                    Profesionālā + vidējā izglītība
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-tags">
+                            <span class="program-tag">Automatizācija</span>
+                            <span class="program-tag">PLC</span>
+                            <span class="program-tag">Robotika</span>
+                        </div>
+                    </div>
+                    <div class="program-card reveal reveal-delay-2">
+                        <div class="program-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <div class="program-info">
+                            <h3>Programmēšanas tehniķis</h3>
+                            <div class="program-meta">
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 12 16"/></svg>
+                                    4 gadi
+                                </span>
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                    Profesionālā + vidējā izglītība
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-tags">
+                            <span class="program-tag">Web izstrāde</span>
+                            <span class="program-tag">Datubāzes</span>
+                            <span class="program-tag">Python</span>
+                        </div>
+                    </div>
+                    <div class="program-card reveal reveal-delay-3">
+                        <div class="program-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <div class="program-info">
+                            <h3>Enerģētikas tehniķis</h3>
+                            <div class="program-meta">
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 12 16"/></svg>
+                                    4 gadi
+                                </span>
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                    Profesionālā + vidējā izglītība
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-tags">
+                            <span class="program-tag">Elektroenerģija</span>
+                            <span class="program-tag">Atjaunojamie resursi</span>
+                        </div>
+                    </div>
+                    <div class="program-card reveal reveal-delay-4">
+                        <div class="program-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        </div>
+                        <div class="program-info">
+                            <h3>Loģistikas darbinieks</h3>
+                            <div class="program-meta">
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 12 16"/></svg>
+                                    3 gadi
+                                </span>
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                    Profesionālā izglītība
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-tags">
+                            <span class="program-tag">Kravu pārvadājumi</span>
+                            <span class="program-tag">Noliktavas</span>
+                        </div>
+                    </div>
+                    <div class="program-card reveal reveal-delay-5">
+                        <div class="program-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                        </div>
+                        <div class="program-info">
+                            <h3>Pārtikas produktu tehnologs</h3>
+                            <div class="program-meta">
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 12 16"/></svg>
+                                    4 gadi
+                                </span>
+                                <span class="program-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                    Profesionālā + vidējā izglītība
+                                </span>
+                            </div>
+                        </div>
+                        <div class="program-tags">
+                            <span class="program-tag">Pārtikas tehnoloģija</span>
+                            <span class="program-tag">Kvalitāte</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities & Opportunities -->
+        <section class="section">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-label">Iespējas</span>
+                    <h2 class="section-title">Aprīkojums un studentu iespējas</h2>
+                    <p class="section-subtitle">
+                        Mēs investējam modernā aprīkojumā un starptautiskās iespējās, lai nodrošinātu vislabāko izglītību.
+                    </p>
+                </div>
+                <div class="info-blocks">
+                    <div class="info-block reveal reveal-delay-1">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            Modernās laboratorijas
+                        </h3>
+                        <ul>
+                            <li>Metālapstrādes darbnīca ar CNC iekārtām</li>
+                            <li>VR (virtuālās realitātes) apmācības vide</li>
+                            <li>Elektronikas un automatizācijas laboratorija</li>
+                            <li>Datorlaboratorijas ar jaunāko programmatūru</li>
+                            <li>Pārtikas tehnoloģiju laboratorija</li>
+                        </ul>
+                    </div>
+                    <div class="info-block reveal reveal-delay-2">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            Starptautiskās iespējas
+                        </h3>
+                        <ul>
+                            <li>Erasmus+ studentu mobilitātes programma</li>
+                            <li>Prakse Vācijas, Somijas, Nīderlandes uzņēmumos</li>
+                            <li>Starptautiski projekti un partnerības</li>
+                            <li>Kultūras apmaiņas pasākumi</li>
+                        </ul>
+                    </div>
+                    <div class="info-block reveal reveal-delay-3">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            Konkursi un sacensības
+                        </h3>
+                        <ul>
+                            <li>SkillsLatvia profesionālās meistarības konkurss</li>
+                            <li>EuroSkills sagatavošana</li>
+                            <li>Nozares specifiskie konkursi</li>
+                            <li>Hakatonu un projektu nedēļas</li>
+                        </ul>
+                    </div>
+                    <div class="info-block reveal reveal-delay-4">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Uzņemšanas prasības
+                        </h3>
+                        <ul>
+                            <li>Pamatizglītība (9. klase) vai vidējā izglītība</li>
+                            <li>Pieteikšanās: jūnijs – augusts</li>
+                            <li>Iestājpārbaudījums atsevišķām programmām</li>
+                            <li>Individuālas konsultācijas pieejamas visu gadu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA on Info page -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box reveal">
+                    <h2>Vai esi gatavs sākt?</h2>
+                    <p>Sazinies ar mums, lai uzzinātu vairāk par uzņemšanu un programmām.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-white" onclick="navigateTo('contact'); return false;">
+                            Sazināties
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ==========================================
+         CONTACT PAGE
+         ========================================== -->
+    <div class="page" id="page-contact">
+
+        <div class="page-hero">
+            <div class="container">
+                <span class="section-label">Kontakti</span>
+                <h1>Sazinies ar mums</h1>
+                <p>Mēs labprāt atbildēsim uz visiem jūsu jautājumiem par programmām un uzņemšanu.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div>
+                        <div class="contact-info-cards reveal">
+                            <div class="contact-info-card">
+                                <div class="contact-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
+                                <div class="contact-info-text">
+                                    <h4>Adrese</h4>
+                                    <p>Vadu iela 3, Valmiera, LV-4201</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-card">
+                                <div class="contact-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </div>
+                                <div class="contact-info-text">
+                                    <h4>Tālrunis</h4>
+                                    <p><a href="tel:+37129009990">+371 2900 9990</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-info-card">
+                                <div class="contact-info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </div>
+                                <div class="contact-info-text">
+                                    <h4>E-pasts</h4>
+                                    <p><a href="mailto:skola@valmierastehnikums.lv">skola@valmierastehnikums.lv</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-map reveal reveal-delay-2">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2110.5!2d25.4278!3d57.5385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfb1e5d1a8a7%3A0x5c5e5b5e5b5e5b5e!2sVadu%20iela%203%2C%20Valmiera!5e0!3m2!1slv!2slv!4v1700000000000!5m2!1slv!2slv"
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Valmieras Tehnikums atrašanās vieta">
+                            </iframe>
+                        </div>
+
+                        <div class="working-hours reveal reveal-delay-3">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Darba laiks
+                            </h4>
+                            <div class="hours-row">
+                                <span class="day">Pirmdiena</span>
+                                <span class="time">08:00 – 16:30</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Otrdiena</span>
+                                <span class="time">08:00 – 16:30</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Trešdiena</span>
+                                <span class="time">08:00 – 16:30</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Ceturtdiena</span>
+                                <span class="time">08:00 – 16:30</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Piektdiena</span>
+                                <span class="time">08:00 – 16:30</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Sestdiena</span>
+                                <span class="time closed">Slēgts</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Svētdiena</span>
+                                <span class="time closed">Slēgts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper reveal reveal-delay-2">
+                        <h3>Raksti mums</h3>
+                        <p>Aizpildi formu un mēs atbildēsim 1–2 darba dienu laikā.</p>
+                        <div class="form-success" id="formSuccess">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Ziņa veiksmīgi nosūtīta! Mēs sazināsimies ar jums.
+                        </div>
+                        <form id="contactForm" onsubmit="handleSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Vārds, uzvārds</label>
+                                <input type="text" id="name" name="name" placeholder="Jānis Bērziņš" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-pasts</label>
+                                <input type="email" id="email" name="email" placeholder="janis@piemers.lv" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Tālrunis (neobligāti)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+371 2XXXXXXX">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Ziņa</label>
+                                <textarea id="message" name="message" placeholder="Jūsu jautājums vai ziņa..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                                Nosūtīt ziņu
+                                <span class="btn-icon">→</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ==========================================
+         FOOTER (always visible)
+         ========================================== -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Valmieras Tehnikums</h3>
+                    <p>Profesionālās izglītības iestāde, kas sagatavo kvalificētus speciālistus darba tirgum. Modernas laboratorijas, praktiskā apmācība un starptautiskas iespējas.</p>
+                </div>
+                <div>
+                    <h4>Navigācija</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="navigateTo('home'); return false;">Sākums</a></li>
+                        <li><a href="#" onclick="navigateTo('info'); return false;">Informācija</a></li>
+                        <li><a href="#" onclick="navigateTo('contact'); return false;">Kontakti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Programmas</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="navigateTo('info'); return false;">Mehatronika</a></li>
+                        <li><a href="#" onclick="navigateTo('info'); return false;">Programmēšana</a></li>
+                        <li><a href="#" onclick="navigateTo('info'); return false;">Enerģētika</a></li>
+                        <li><a href="#" onclick="navigateTo('info'); return false;">Loģistika</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Kontaktinformācija</h4>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Vadu iela 3, Valmiera, LV-4201</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.87.36 1.72.7 2.53a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.81.34 1.66.57 2.53.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>+371 2900 9990</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span>skola@valmierastehnikums.lv</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Valmieras Tehnikums. Visas tiesības aizsargātas.</span>
+                <span>Izstrādāts ar ❤️ Valmierā</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+    <script>
+        // ========================================
+        // PAGE NAVIGATION SYSTEM
+        // ========================================
+        let currentPage = 'home';
+
+        function navigateTo(page) {
+            if (page === currentPage) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            // Hide current page
+            const currentEl = document.getElementById('page-' + currentPage);
+            currentEl.classList.remove('visible');
+            
+            setTimeout(() => {
+                currentEl.classList.remove('active');
+                
+                // Show new page
+                const newEl = document.getElementById('page-' + page);
+                newEl.classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                
+                // Trigger animation
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        newEl.classList.add('visible');
+                    });
+                });
+                
+                // Update nav active states
+                document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
+                    link.classList.toggle('active', link.dataset.page === page);
+                });
+                
+                currentPage = page;
+                
+                // Re-trigger scroll reveals for new page
+                setTimeout(revealOnScroll, 100);
+            }, 300);
+
+            // Close mobile menu if open
+            closeMobileMenu();
+        }
+
+        // Initialize home page as visible
+        document.addEventListener('DOMContentLoaded', () => {
+            const homePage = document.getElementById('page-home');
+            requestAnimationFrame(() => {
+                homePage.classList.add('visible');
+            });
+        });
+
+        // ========================================
+        // NAVBAR SCROLL EFFECT
+        // ========================================
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // ========================================
+        // MOBILE MENU
+        // ========================================
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+            navOverlay.classList.toggle('show');
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        });
+
+        navOverlay.addEventListener('click', closeMobileMenu);
+
+        function closeMobileMenu() {
+            navToggle.classList.remove('open');
+            navLinks.classList.remove('open');
+            navOverlay.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // ========================================
+        // SCROLL REVEAL ANIMATION
+        // ========================================
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const revealPoint = 100;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    el.classList.add('revealed');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', () => {
+            setTimeout(revealOnScroll, 200);
+        });
+
+        // ========================================
+        // CONTACT FORM HANDLER
+        // ========================================
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('formSuccess');
+            const btn = form.querySelector('button[type="submit"]');
+            
+            // Simulate loading
+            btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;">Nosūta... <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></span>';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                form.style.display = 'none';
+                success.classList.add('show');
+                btn.innerHTML = 'Nosūtīt ziņu <span class="btn-icon">→</span>';
+                btn.disabled = false;
+                
+                // Reset after 5 seconds
+                setTimeout(() => {
+                    success.classList.remove('show');
+                    form.style.display = 'block';
+                    form.reset();
+                }, 5000);
+            }, 1500);
+        }
+
+        // ========================================
+        // SMOOTH SCROLL FOR ANCHOR LINKS
+        // ========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ========================================
+        // ADD SPIN ANIMATION FOR LOADING
+        // ========================================
+        const style = document.createElement('style');
+        style.textContent = '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
+        document.head.appendChild(style);
+    </script>
+
+</body>
+</html>
